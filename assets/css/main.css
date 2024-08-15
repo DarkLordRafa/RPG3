@@ -103,12 +103,28 @@
 .skill-points{
 	border: 2vw solid #954c18;
 	height: 65%;
+	color: white;
+	text-align: center;
+	font-size: 4vw;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .skill-point{
 	height: 5vw;
 	width: 5vw;
-	background: radial-gradient(circle closest-side at center, rgb(255, 255, 255) 1%, rgb(78, 0, 78) 50%);
+	background: radial-gradient(circle closest-side at center, rgb(255, 255, 255) 1%, rgb(70, 0, 70) 50%);
+	transition: 1s;
+	/*border: solid white 1px;*/
+	z-index: 2;
+}
+
+.empty-icons div{
+	height: 5vw;
+	width: 5vw;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .stats-area ul li img{

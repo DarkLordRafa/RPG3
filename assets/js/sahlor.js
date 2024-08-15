@@ -13,6 +13,8 @@ const medicineIncreaseButton = document.querySelector("#medicine-increase");
 const medicineDecreaseButton = document.querySelector("#medicine-decrease");
 const therapyIncreaseButton = document.querySelector("#therapy-increase");
 const therapyDecreaseButton = document.querySelector("#therapy-decrease");
+const skillPointIncreaseButton = document.querySelector("#skill-point-increase");
+const skillPointDecreaseButton = document.querySelector("#skill-point-decrease");
 const attributeButtons = document.querySelectorAll(".attribute-icon");
 const resetButton = document.querySelector("#reset-button");
 const confirmResetScreen = document.querySelector(".confirm-reset-screen");
@@ -30,6 +32,9 @@ const lifeBar = document.querySelector(".life-bar");
 const sanityBar = document.querySelector(".sanity-bar");
 const lifeValue = document.querySelector(".life-value");
 const sanityValue = document.querySelector(".sanity-value");
+const skillPoint1 = document.querySelector("#skill-point-1");
+const skillPoint2 = document.querySelector("#skill-point-2");
+const skillPoint3 = document.querySelector("#skill-point-3");
 
 
 const fightAttribute = document.querySelector("#fight");
@@ -53,6 +58,7 @@ const consumableText = "Sahlor lança uma de suas âmpolas de água benta no ini
 
 
 let sahlor;
+let skillPointsAttribute;
 
 
 function increaseAttribute(propertyName, element){
@@ -63,6 +69,29 @@ function increaseAttribute(propertyName, element){
 function decreaseAttribute(propertyName, element){
 	sahlor[propertyName] --;
 	element.innerHTML = sahlor[propertyName];
+}
+
+function displaySkillPoints(){
+	if (sahlor.skillPointsAttribute == 3){
+		skillPoint1.style.opacity = 1;
+		skillPoint2.style.opacity = 1;
+		skillPoint3.style.opacity = 1;
+	}
+	else if(sahlor.skillPointsAttribute == 2){
+		skillPoint1.style.opacity = 1;
+		skillPoint2.style.opacity = 1;
+		skillPoint3.style.opacity = 0;
+	}
+	else if(sahlor.skillPointsAttribute == 1){
+		skillPoint1.style.opacity = 1;
+		skillPoint2.style.opacity = 0;
+		skillPoint3.style.opacity = 0;
+	}
+	else {
+		skillPoint1.style.opacity = 0;
+		skillPoint2.style.opacity = 0;
+		skillPoint3.style.opacity = 0;
+	}
 }
 
 function displayAttributes(){
@@ -77,6 +106,7 @@ function displayAttributes(){
 	ocultismAttribute.innerHTML = sahlor.ocultism;
 	medicineAttribute.innerHTML = sahlor.medicine;
 	therapyAttribute.innerHTML = sahlor.therapy;
+	displaySkillPoints();
 }
 
 function resetStats(){
@@ -105,6 +135,7 @@ const getSahlor = () =>{
 		ocultismAttribute.innerHTML = sahlor.atletism;
 		medicineAttribute.innerHTML = sahlor.atletism;
 		therapyAttribute.innerHTML = sahlor.atletism;
+		skillPointsAttribute = sahlor.skillPointsAttribute;
 	}
 	catch {
 		sahlor = {
@@ -119,6 +150,7 @@ const getSahlor = () =>{
 		ocultism: 1,
 		medicine: 1,
 		therapy: 1,
+		skillPointsAttribute: 3
 		};
 	}
 	finally{
@@ -136,9 +168,9 @@ function percentage(numA, numB){
 function changeHpSa(bar, barValue, propertyName, maxPropertyName){
 	let newValue = parseInt(prompt("Insira o novo valor:"));
 	if (isNaN(newValue)){
-		newValue = 00;
+		newValue = 0;
 	}
-	if (newValue !== "" && newValue !== null && newValue !== 00){
+	if (newValue !== "" && newValue !== null && newValue !== 0){
 		if (newValue > sahlor[maxPropertyName]){
 			sahlor[maxPropertyName] = newValue;
 		}
@@ -213,6 +245,20 @@ therapyIncreaseButton.addEventListener("click", function(){
 
 therapyDecreaseButton.addEventListener("click", function(){
 	decreaseAttribute("therapy", therapyAttribute);
+});
+
+skillPointIncreaseButton.addEventListener("click", function(){
+	if(sahlor.skillPointsAttribute < 3){
+	sahlor.skillPointsAttribute ++;
+	displaySkillPoints();
+	}
+});
+
+skillPointDecreaseButton.addEventListener("click", function(){
+	if(sahlor.skillPointsAttribute > 0){
+	sahlor.skillPointsAttribute --;
+	displaySkillPoints();
+	}
 });
 
 lifeValue.addEventListener("click", function(){

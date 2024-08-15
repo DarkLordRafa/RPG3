@@ -3,7 +3,7 @@
 	<head>
 		<title>Sahlor</title>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable='no'" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 		<meta name="theme-color" content="black" />
 		<link rel="stylesheet" href="assets/bootstrap5/css/bootstrap.min.css" type="text/css" />
 		<link rel="stylesheet" href="assets/css/main.css" type="text/css" />
@@ -174,15 +174,21 @@
 
 
 					<div class="skill-points-area d-flex justify-content-between align-items-center">
-						<span class="skill-point-button" id="skill-point-decrease">-</span>
+						<span class="skill-point-button attribute-icon" id="skill-point-decrease">-</span>
 
-						<div class="skill-points d-flex justify-content-evenly align-items-center w-75 bg-black rounded-pill">
+						<div class="skill-points d-flex justify-content-evenly align-items-center w-75 bg-black rounded-pill position-relative">
+							<div class="empty-icons d-flex position-absolute align-items-center justify-content-evenly w-100">
+								<div class="rounded-circle">x</div>
+								<div class="rounded-circle">x</div>
+								<div class="rounded-circle">x</div>
+							</div>
+
 							<div class="skill-point rounded-circle" id="skill-point-1"></div>
 							<div class="skill-point rounded-circle" id="skill-point-2"></div>
 							<div class="skill-point rounded-circle" id="skill-point-3"></div>
 						</div>
 
-						<span class="skill-point-button" id="skill-point-increase">+</span>
+						<span class="skill-point-button attribute-icon" id="skill-point-increase">+</span>
 					</div>
 
 
