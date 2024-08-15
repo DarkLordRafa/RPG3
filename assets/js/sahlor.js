@@ -20,16 +20,10 @@ const confirmResetButton = document.querySelector(".confirm-reset-button");
 const cancelResetButton = document.querySelector(".cancel-reset-button");
 
 
-const skill1IncreaseButton = document.querySelector("#skill1-increase");
-const skill1DecreaseButton = document.querySelector("#skill1-decrease");
-const consumableIncreaseButton = document.querySelector("#consumable-increase");
-const consumableDecreaseButton = document.querySelector("#consumable-decrease");
-
 const statsArea = document.querySelector(".stats-area");
 const statsAreaToggleButton = document.querySelector(".character-stats-toggle-button");
 const statsAreaSwitchButton = document.querySelector(".character-stats-switch-button");
 const skillsArea = document.querySelector(".skills-area");
-
 
 
 const lifeBar = document.querySelector(".life-bar");
@@ -53,73 +47,67 @@ const skillDescriptionText = document.querySelector(".skill-description p");
 const skill1Label = document.querySelector("#skill1-label");
 const consumableLabel = document.querySelector("#consumable-label");
 
-const skill1 = document.querySelector("#skill1");
-const consumable = document.querySelector("#consumable");
 
-const skill1Text = "Trevor pode utilizar seus amuletos para encarar diversas situações, seja para identificar uma criatura ou mesmo em combate.";
-const consumableText = "Trevor lança uma de suas âmpolas de água benta no inimigo, causando pouco dano mas com acerto garantido.";
+const skill1Text = "Sahlor pode utilizar seus amuletos para encarar diversas situações, seja para identificar uma criatura ou mesmo em combate.";
+const consumableText = "Sahlor lança uma de suas âmpolas de água benta no inimigo, causando pouco dano mas com acerto garantido.";
 
 
-let trevor;
+let sahlor;
 
 
 function increaseAttribute(propertyName, element){
-	trevor[propertyName] ++;
-	element.innerHTML = trevor[propertyName];
+	sahlor[propertyName] ++;
+	element.innerHTML = sahlor[propertyName];
 }
 
 function decreaseAttribute(propertyName, element){
-	trevor[propertyName] --;
-	element.innerHTML = trevor[propertyName];
+	sahlor[propertyName] --;
+	element.innerHTML = sahlor[propertyName];
 }
 
 function displayAttributes(){
-	lifeValue.innerHTML = trevor.life;
-	sanityValue.innerHTML = trevor.sanity;
-	lifeBar.style.width = `${percentage(trevor.life, trevor.maxLife)}%`;
-	sanityBar.style.width = `${percentage(trevor.sanity, trevor.maxSanity)}%`;
-	fightAttribute.innerHTML = trevor.fight;
-	intelligenceAttribute.innerHTML = trevor.intelligence;
-	shotAttribute.innerHTML = trevor.shot;
-	atletismAttribute.innerHTML = trevor.atletism;
-	ocultismAttribute.innerHTML = trevor.ocultism;
-	medicineAttribute.innerHTML = trevor.medicine;
-	therapyAttribute.innerHTML = trevor.therapy;
-	skill1.innerHTML = trevor.skill1;
-	consumable.innerHTML = trevor.consumable;
+	lifeValue.innerHTML = sahlor.life;
+	sanityValue.innerHTML = sahlor.sanity;
+	lifeBar.style.width = `${percentage(sahlor.life, sahlor.maxLife)}%`;
+	sanityBar.style.width = `${percentage(sahlor.sanity, sahlor.maxSanity)}%`;
+	fightAttribute.innerHTML = sahlor.fight;
+	intelligenceAttribute.innerHTML = sahlor.intelligence;
+	shotAttribute.innerHTML = sahlor.shot;
+	atletismAttribute.innerHTML = sahlor.atletism;
+	ocultismAttribute.innerHTML = sahlor.ocultism;
+	medicineAttribute.innerHTML = sahlor.medicine;
+	therapyAttribute.innerHTML = sahlor.therapy;
 }
 
 function resetStats(){
-	window.localStorage.removeItem("trevor_key");
-	getTrevor();
+	window.localStorage.removeItem("sahlor_key");
+	getSahlor();
 	displayAttributes();
 	confirmResetScreen.classList.add("d-none");
 }
 
 
-const getTrevor = () =>{
+const getSahlor = () =>{
 	try {
 	//Variável recebendo o objeto salvo (não significa que ele exista, sendo assim, o teste não falha mesmo se o objeto não existir)
-		trevor = JSON.parse(window.localStorage.getItem("trevor_key"));
-	//Já a partir daqui, o código tenta atribuir os valores salvos no objeto da variável aos elementos html, algo que só vai acontecer se a variável trevor possuir esses valores, ou seja, se ela recebeu um objeto salvo no localStorage.
+		sahlor = JSON.parse(window.localStorage.getItem("sahlor_key"));
+	//Já a partir daqui, o código tenta atribuir os valores salvos no objeto da variável aos elementos html, algo que só vai acontecer se a variável sahlor possuir esses valores, ou seja, se ela recebeu um objeto salvo no localStorage.
 	
 	//Se os elementos não conseguirem receber os valores, significa que essees valores não existem, assim como o objeto requisitado, então o teste falha e passa para o catch
-		lifeValue.innerHTML = trevor.life;
-		sanityValue.innerHTML = trevor.sanity;
-		lifeBar.style.width = `${percentage(trevor.life, trevor.maxLife)}%`;
-		sanityBar.style.width = `${percentage(trevor.sanity, trevor.maxSanity)}%`;
-		fightAttribute.innerHTML = trevor.fight;
-		intelligenceAttribute.innerHTML = trevor.intelligence;
-		shotAttribute.innerHTML = trevor.shot;
-		atletismAttribute.innerHTML = trevor.atletism;
-		ocultismAttribute.innerHTML = trevor.atletism;
-		medicineAttribute.innerHTML = trevor.atletism;
-		therapyAttribute.innerHTML = trevor.atletism;
-		skill1.innerHTML = trevor.skill1;
-		consumable.innerHTML = trevor.consumable;
+		lifeValue.innerHTML = sahlor.life;
+		sanityValue.innerHTML = sahlor.sanity;
+		lifeBar.style.width = `${percentage(sahlor.life, sahlor.maxLife)}%`;
+		sanityBar.style.width = `${percentage(sahlor.sanity, sahlor.maxSanity)}%`;
+		fightAttribute.innerHTML = sahlor.fight;
+		intelligenceAttribute.innerHTML = sahlor.intelligence;
+		shotAttribute.innerHTML = sahlor.shot;
+		atletismAttribute.innerHTML = sahlor.atletism;
+		ocultismAttribute.innerHTML = sahlor.atletism;
+		medicineAttribute.innerHTML = sahlor.atletism;
+		therapyAttribute.innerHTML = sahlor.atletism;
 	}
 	catch {
-		trevor = {
+		sahlor = {
 		life: 13,
 		sanity: 30,
 		maxLife: 13,
@@ -131,8 +119,6 @@ const getTrevor = () =>{
 		ocultism: 1,
 		medicine: 1,
 		therapy: 1,
-		skill1: 1,
-		consumable: 1
 		};
 	}
 	finally{
@@ -140,7 +126,7 @@ const getTrevor = () =>{
 	}
 };
 
-getTrevor();
+getSahlor();
 
 
 function percentage(numA, numB){
@@ -153,14 +139,14 @@ function changeHpSa(bar, barValue, propertyName, maxPropertyName){
 		newValue = 00;
 	}
 	if (newValue !== "" && newValue !== null && newValue !== 00){
-		if (newValue > trevor[maxPropertyName]){
-			trevor[maxPropertyName] = newValue;
+		if (newValue > sahlor[maxPropertyName]){
+			sahlor[maxPropertyName] = newValue;
 		}
-		trevor[propertyName] = newValue;
-		bar.style.width = `${percentage(trevor[propertyName], trevor[maxPropertyName])}%`;
+		sahlor[propertyName] = newValue;
+		bar.style.width = `${percentage(sahlor[propertyName], sahlor[maxPropertyName])}%`;
 	}
-	barValue.innerHTML = trevor[propertyName];
-	window.localStorage.setItem("trevor_key", JSON.stringify(trevor));
+	barValue.innerHTML = sahlor[propertyName];
+	window.localStorage.setItem("sahlor_key", JSON.stringify(sahlor));
 }
 
 
@@ -229,22 +215,6 @@ therapyDecreaseButton.addEventListener("click", function(){
 	decreaseAttribute("therapy", therapyAttribute);
 });
 
-skill1IncreaseButton.addEventListener("click", function(){
-	increaseAttribute("skill1", skill1);
-});
-
-skill1DecreaseButton.addEventListener("click", function(){
-	decreaseAttribute("skill1", skill1);
-});
-
-consumableIncreaseButton.addEventListener("click", function(){
-	increaseAttribute("consumable", consumable);
-});
-
-consumableDecreaseButton.addEventListener("click", function(){
-	decreaseAttribute("consumable", consumable);
-});
-
 lifeValue.addEventListener("click", function(){
 	changeHpSa(lifeBar, lifeValue, "life", "maxLife");
 });
@@ -255,7 +225,7 @@ sanityValue.addEventListener("click", function(){
 
 attributeButtons.forEach(function(element){
 	element.addEventListener("click", function(){
-		window.localStorage.setItem("trevor_key", JSON.stringify(trevor));
+		window.localStorage.setItem("sahlor_key", JSON.stringify(sahlor));
 	});
 });
 

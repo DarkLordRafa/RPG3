@@ -89,6 +89,28 @@
 	font-size: 6vw;
 }
 
+.skill-points-area{
+	width: 70%;
+	font-family: "Aleo";
+	font-weight: bold;
+	color: black;
+}
+
+.skill-point-button{
+	font-size: 10vw;
+}
+
+.skill-points{
+	border: 2vw solid #954c18;
+	height: 65%;
+}
+
+.skill-point{
+	height: 5vw;
+	width: 5vw;
+	background: radial-gradient(circle closest-side at center, rgb(255, 255, 255) 1%, rgb(78, 0, 78) 50%);
+}
+
 .stats-area ul li img{
 	height: 8vw;
 	width: 8vw;
